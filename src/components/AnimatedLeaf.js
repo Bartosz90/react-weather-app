@@ -3,14 +3,22 @@ import "../styles/app.sass";
 
 class AnimatedLeaf extends Component {
   state = {
-    leafs: [],
-    counter: 1
+    leafs: []
   };
   componentDidMount() {
-    for (let i = 0; i < `${window.innerWidth < 1200 ? 0 : 30}`; i++) {
+    this.leafRender();
+  }
+  leafRender = () => {
+    for (let i = 0; i < `${window.innerWidth > 1200 ? 30 : 0}`; i++) {
+      const leafs = [
+        "fas fa-leaf",
+        "fab fa-canadian-maple-leaf",
+        "fab fa-envira",
+        "fab fa-pagelines"
+      ];
       const leaf = document.createElement("i");
       leaf.className = `animate ${
-        this.leafs[Math.floor(Math.random() * (3 - 0 + 1)) + 0]
+        leafs[Math.floor(Math.random() * (3 - 0 + 1)) + 0]
       }`;
       leaf.style.top = `${Math.floor(Math.random() * (10 - 0 + 1)) + 0}vh`;
       leaf.style.left = `${Math.floor(Math.random() * (99 - 1 + 1)) + 1}vw`;
@@ -25,14 +33,8 @@ class AnimatedLeaf extends Component {
         50},0)`;
       document.body.appendChild(leaf);
     }
-  }
+  };
 
-  leafs = [
-    "fas fa-leaf",
-    "fab fa-canadian-maple-leaf",
-    "fab fa-envira",
-    "fab fa-pagelines"
-  ];
   render() {
     return <></>;
   }

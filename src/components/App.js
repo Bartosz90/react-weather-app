@@ -8,16 +8,23 @@ class WeatherApp extends Component {
   state = {
     weather: [],
     city: "Powiat warszawski zachodni",
-    cityName: ""
+    cityName: "Warsaw",
+    weatherSectionClass: "weather"
   };
   handleOptionChange = e => {
     this.setState({
-      city: e.target.value,
-      cityName: e.target.options[e.target.options.selectedIndex].text
+      city: e.target.value
     });
   };
   handleWeatherRender = e => {
     e.preventDefault();
+    this.setState({
+      weather: [],
+      cityName: e.target.querySelector("select").options[
+        e.target.querySelector("select").options.selectedIndex
+      ].text,
+      weatherSectionClass: "weather"
+    });
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${
         this.state.city
@@ -28,7 +35,7 @@ class WeatherApp extends Component {
       })
       .then(data => {
         let weather = this.state.weather.concat(data);
-        this.setState({ weather });
+        this.setState({ weather, weatherSectionClass: "weather active" });
       });
   };
 
@@ -40,7 +47,11 @@ class WeatherApp extends Component {
           change={this.handleOptionChange}
           submit={this.handleWeatherRender}
         />
-        <Weather wethaer={this.state.weather} cityName={this.state.cityName} />
+        <Weather
+          weather={this.state.weather}
+          cityName={this.state.cityName}
+          class={this.state.weatherSectionClass}
+        />
         <AnimatedLeaf />
       </section>
     );
