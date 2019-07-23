@@ -1,0 +1,32 @@
+@import "../index.sass"
+.app 
+    width: 600px
+    height: 500px
+    +flexCenter()
+    flex-direction: column
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+.animate 
+    position: fixed 
+    border-radius: 50%
+    color: #7dce94
+    font-size: 30px
+    animation: drop linear infinite
+    z-index: -1
+    opacity: 0
+@keyframes drop 
+    0% 
+        opacity: 0
+    10%
+        opacity: 1
+    25% 
+        transform: translate(-100%, 25vh) rotate(90deg)
+        opacity: .8
+    50% 
+        transform: translate(100%, 50vh) rotate(180deg)
+        opacity: .8
+    75% 
+        transform: translate(-100%, 75vh) rotate(270deg)
+        opacity: .8
+    100% 
+        transform: translate(100%, 90vh) rotate(360deg)
+        opacity: 0
