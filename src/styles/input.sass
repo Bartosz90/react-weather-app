@@ -4,8 +4,13 @@
     height: 10%
     +flexCenter()
     background-color: #7dce94
+    @media (orientation: portrait)
+        height: 20%
     p 
         font-size: 30px
+        @media (orientation: portrait)
+            width: 100%
+            text-align: center
     select , button
         margin: 0 10px
         height: 60%
@@ -16,8 +21,10 @@
         padding: 5px
         outline-color: green    
         transition: .2s linear
+        @media (orientation: portrait)
+            height: 35%
+            width: 130px
     button 
-         width: 100px
          cursor: pointer
          text-transform: uppercase
          letter-spacing: 1px
